@@ -25,8 +25,8 @@ class BioBloomClassifier {
 public:
 	explicit BioBloomClassifier(const vector<string> &filterFilePaths,
 			double scoreThreshold, const string &outputPrefix,
-			const string &outputPostFix, unsigned streakThreshold, unsigned minHit,
-			bool minHitOnly);
+			const string &outputPostFix, unsigned streakThreshold,
+			unsigned minHit, bool minHitOnly);
 	void filter(const vector<string> &inputFiles);
 	void filterPrint(const vector<string> &inputFiles,
 			const string &outputType);
@@ -45,9 +45,11 @@ private:
 			unordered_map<string, bool> &hits);
 	void evaluateRead(const FastqRecord &rec, const string &hashSig,
 			unordered_map<string, bool> &hits);
+	vector<unsigned> calculateStartIndexes(unsigned kmerSize);
 
 	//group filters with same hash number
 	unordered_map<string, vector<shared_ptr<BloomFilterInfo> > > m_infoFiles;
+	unordered_map<string, vector<unsigned> > m_tiling;
 	unordered_map<string, shared_ptr<MultiFilter> > m_filters;
 	unordered_map<string, shared_ptr<BloomFilter> > m_filtersSingle;
 	vector<string> m_hashSigs;
