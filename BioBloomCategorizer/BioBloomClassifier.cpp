@@ -771,7 +771,6 @@ bool BioBloomClassifier::fexists(const string &filename) const
 void BioBloomClassifier::evaluateReadCollab(const FastqRecord &rec,
 		const string &hashSig, unordered_map<string, bool> &hits)
 {
-	cerr << "IN" << endl;
 	//get filterIDs to iterate through has in a consistent order
 	const vector<string> &idsInFilter = (*m_filters[hashSig]).getFilterIds();
 	unsigned kmerSize = m_infoFiles.at(hashSig).front()->getKmerSize();
@@ -836,6 +835,11 @@ void BioBloomClassifier::evaluateReadCollab(const FastqRecord &rec,
 						++currentLoc;
 //						jump = true;
 						if (threshold <= score) {
+							for (vector<string>::const_iterator i =
+									idsInFilter.begin(); i != idsInFilter.end();
+									++i) {
+								assert(hits[*i] == false);
+							}
 							hits[filterID] = true;
 							//end filtering if read is claimed by a filter
 							return;
