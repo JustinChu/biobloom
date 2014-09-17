@@ -39,6 +39,8 @@ public:
 	void filterPairBAMPrint(const string &file, const string &outputType);
 
 	void setCollabFilter(){
+		//todo make collaborative filtering work with differing number of hash functions
+		assert(m_hashSigs.size() == 1);
 		m_collab = true;
 	}
 
