@@ -764,7 +764,7 @@ void BioBloomClassifier::evaluateReadCollab(const FastqRecord &rec,
 	ReadsProcessor proc(kmerSize);
 
 	//create storage for hits per filter
-	multimap<unsigned, string> firstPassHits;
+	std::multimap<unsigned, string> firstPassHits;
 
 	//base for each filter until one filter obtains hit threshold
 	//TODO: staggered pattering
@@ -791,7 +791,7 @@ void BioBloomClassifier::evaluateReadCollab(const FastqRecord &rec,
 	double threshold = m_scoreThreshold * normalizationValue;
 
 	//evaluate promising group first
-	for (multimap<unsigned, string>::reverse_iterator i = firstPassHits.rbegin();
+	for (std::multimap<unsigned, string>::reverse_iterator i = firstPassHits.rbegin();
 			i != firstPassHits.rend(); ++i) {
 		string filterID = i->second;
 		size_t currentLoc = 0;
