@@ -12,7 +12,7 @@
 #include <sys/stat.h>
 #include "Common/Dynamicofstream.h"
 #include "ResultsManager.h"
-#include "boost/container/map.hpp"
+#include <map>
 #if _OPENMP
 # include <omp.h>
 #endif
@@ -764,7 +764,7 @@ void BioBloomClassifier::evaluateReadCollab(const FastqRecord &rec,
 	ReadsProcessor proc(kmerSize);
 
 	//create storage for hits per filter
-	std::multimap<unsigned, string> firstPassHits;
+	multimap<unsigned, string> firstPassHits;
 
 	//base for each filter until one filter obtains hit threshold
 	//TODO: staggered pattering
@@ -791,7 +791,7 @@ void BioBloomClassifier::evaluateReadCollab(const FastqRecord &rec,
 	double threshold = m_scoreThreshold * normalizationValue;
 
 	//evaluate promising group first
-	for (std::multimap<unsigned, string>::reverse_iterator i = firstPassHits.rbegin();
+	for (multimap<unsigned, string>::reverse_iterator i = firstPassHits.rbegin();
 			i != firstPassHits.rend(); ++i) {
 		string filterID = i->second;
 		size_t currentLoc = 0;
