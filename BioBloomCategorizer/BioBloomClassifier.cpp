@@ -84,9 +84,9 @@ void BioBloomClassifier::filter(const vector<string> &inputFiles)
 
 				unsigned count = 0;
 
-				for (vector<string>::const_iterator i = hits.begin();
+				for (unordered_map<string, bool>::iterator i = hits.begin();
 						i != hits.end(); ++i) {
-					count += hits[*i];
+					count += i->second;
 				}
 
 				cout << count << endl;
