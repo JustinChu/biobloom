@@ -75,10 +75,10 @@ void BioBloomClassifier::filter(const vector<string> &inputFiles)
 						evaluateReadCollab(rec, *j, hits);
 					} else if (m_minHitOnly) {
 						evaluateRead(rec, *j, hits);
-						cout << 1 << endl;
+						cout << 3 << endl;
 					} else {
 						evaluateReadStd(rec, *j, hits);
-						cout << 1 << endl;
+						cout << 4 << endl;
 					}
 				}
 
