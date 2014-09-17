@@ -75,22 +75,10 @@ void BioBloomClassifier::filter(const vector<string> &inputFiles)
 						evaluateReadCollab(rec, *j, hits);
 					} else if (m_minHitOnly) {
 						evaluateRead(rec, *j, hits);
-						cout << 3 << endl;
 					} else {
 						evaluateReadStd(rec, *j, hits);
-						cout << 4 << endl;
 					}
 				}
-
-				unsigned count = 0;
-
-				for (unordered_map<string, bool>::iterator i = hits.begin();
-						i != hits.end(); ++i) {
-					count += i->second;
-				}
-
-				cout << count << endl;
-
 				//Evaluate hit data and record for summary
 				resSummary.updateSummaryData(hits);
 			} else
@@ -846,6 +834,7 @@ void BioBloomClassifier::evaluateReadCollab(const FastqRecord &rec,
 						++currentLoc;
 //						jump = true;
 						if (threshold <= score) {
+							cerr << filterID << endl;
 							hits[filterID] = true;
 							//end filtering if read is claimed by a filter
 							return;
