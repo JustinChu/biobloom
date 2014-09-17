@@ -317,6 +317,7 @@ int main(int argc, char *argv[])
 			streak, minHit, minHitOnly);
 
 	if (collab){
+		cerr << "Collaborative Filtering On" << endl;
 		BBC.setCollabFilter();
 	}
 
