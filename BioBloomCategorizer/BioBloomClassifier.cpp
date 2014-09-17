@@ -834,7 +834,10 @@ void BioBloomClassifier::evaluateReadCollab(const FastqRecord &rec,
 						++currentLoc;
 //						jump = true;
 						if (threshold <= score) {
-							cerr << filterID << rec.id << endl;
+							for (vector<string>::const_iterator i = idsInFilter.begin();
+									i != idsInFilter.end(); ++i) {
+								assert(hits.at(*i) == false);
+							}
 							hits[filterID] = true;
 							//end filtering if read is claimed by a filter
 							return;
