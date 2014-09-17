@@ -231,7 +231,7 @@ int main(int argc, char *argv[]) {
 	if (redunRate > 0.25) {
 		cerr
 				<< "Consider checking your files for duplicate sequences and adjusting them accordingly.\n"
-						"High redundancy will cause filter sizes used to be overestimated, thus potentially resulting in a larger filter than needed.\n"
+						"High redundancy will cause the filter sizes used to be overestimated, thus potentially resulting in a larger filter than needed.\n"
 						"Alternatively you can set the number of elements wanted in the filter with (-n) and ignore this message."
 				<< endl;
 	}
