@@ -920,7 +920,7 @@ void BioBloomClassifier::evaluateRead(const FastqRecord &rec,
 void BioBloomClassifier::evaluateReadStd(const FastqRecord &rec,
 		const string &hashSig, unordered_map<string, bool> &hits)
 {
-
+	cerr << "IN" << endl;
 	//get filterIDs to iterate through has in a consistent order
 	const vector<string> &idsInFilter = (*m_filters[hashSig]).getFilterIds();
 
