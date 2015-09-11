@@ -1,6 +1,6 @@
 BioBloomtools User Manual
 ------
-NOTE: This repository is depreciated, please go to BCGSC/biobloom for the latest version
+#NOTE: This repository is depreciated, please go to [BCGSC/biobloom](https://github.com/BCGSC/biobloom) for the latest version
 
 
 BioBloom Tools (BBT) provides the means to create filters for a given reference and then to categorizes sequences. This methodology is faster than alignment but does not provide mapping locations. BBT was initially intended to be used for pre-processing and QC applications like contamination detection, but is flexible to accommodate other purposes. This tool is intended to be a pipeline component to replace costly alignment steps.
